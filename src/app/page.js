@@ -34,8 +34,8 @@ export default function RootLayout({ children }) {
         {header}
         {children}
         {footer}
+        <footer>Made by Themba </footer>
       </body>
-      <footer>Made by Themba </footer>
     </html>
   );
 }

@@ -1,21 +1,21 @@
 import Image from "next/image";
 import { sql } from "@vercel/postgres";
-import Link from "next/Link";
+import Link from "next/link";
 
-export default async function Home() {
-  const MusicPost = await sql`SELECT FROM MusicPost`;
+export default async function MusicPost() {
+  const MusicPost = await sql`SELECT * FROM MusicPost`;
 
   return (
     <div className="addmusic-container">
       <h2>Add favMusic</h2>
-      {MusicPostposts.rows.map((MusicPost) => {
+      {MusicPost.rows.map((MusicPost) => {
         return (
-          <Link href={`/MusicPost/${MusicPost.i.d}`} key={MusicPost.id}>
+          <Link href={`/MusicPost/${MusicPost.id}`} key={MusicPost.id}>
             <h3>{MusicPost.artist}</h3>
             <p>{MusicPost.content}</p>
             <Image
-              src={`/${MusicPost.album}.png`}
-              alt={MusicPost.album}
+              src={`/image/${MusicPost.id}.png`}
+              alt={MusicPost.content}
               width={300}
               height={200}
             />

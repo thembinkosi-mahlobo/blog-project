@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { sql } from "@vercel/postgres";
-import Link from "next/Link";
+import Link from "next/link";
 
 export default async function SingleMusicPost({ params }) {
-  const result = await sql`SELECT FROM MusicPost WHERE id = ${params.id}`;
+  const result = await sql`SELECT * FROM MusicPost WHERE id = ${params.id}`;
   const MusicPost = result.rows[0];
 
   return (
@@ -19,8 +19,8 @@ export default async function SingleMusicPost({ params }) {
       <h2>{MusicPost.content}</h2>
       <p>{MusicPost.description}</p>
       <Image
-        src={`/${MusicPost.album}.png`}
-        alt={MusicPost.album}
+        src={`/${MusicPost.id}.png`}
+        alt={MusicPost.content}
         width={300}
         height={200}
       />
