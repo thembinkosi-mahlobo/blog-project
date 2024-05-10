@@ -4,6 +4,10 @@ import Link from "next/link";
 
 export default async function SingleMusicPost({ params }) {
   const result = await sql`SELECT * FROM MusicPost WHERE id = ${params.id}`;
+
+  if (result.rows.length === 0) {
+    return <div> No MusicPost found for ID:{params.id}</div>;
+  }
   const MusicPost = result.rows[0];
 
   return (
