@@ -24,7 +24,7 @@ export default async function SingleMusicPost({ params }) {
         width={300}
         height={200}
       />
-      <Link href={`/Music${params.id}/edit`}>Edit</Link>
+      <Link href={`/image/Music${params.id}/edit`}>Edit</Link>
     </div>
   );
 }
