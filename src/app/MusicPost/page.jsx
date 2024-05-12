@@ -8,6 +8,9 @@ export default async function MusicPost() {
   return (
     <div className="addmusic-container">
       <h2>Add favMusic</h2>
+      <nav>
+        <Link href="/edit">EditMusicPost</Link>
+      </nav>
       {MusicPost.rows.map((MusicPost) => {
         return (
           <Link href={`/MusicPost/${MusicPost.id}`} key={MusicPost.id}>
