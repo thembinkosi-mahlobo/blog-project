@@ -4,10 +4,9 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import MusicPost from "../MusicPost/page";
 
-export default async function editMusicPost({ params }) {
+export default async function SingleMusicPost({ params }) {
   const result = await sql`SELECT FROM MusicPost WHERE id = ${params.id}`;
-  console.log(params.id);
-  // const editForm = result.rows[0];
+  // const MusicPost = result.rows[0];
 
   async function editMusicPost(formData) {
     "use server";
@@ -20,10 +19,10 @@ export default async function editMusicPost({ params }) {
 
     await sql`UPDATE MusicPost SET album=${album}, artist=${artist}, genre=${genre}, year=${year}, content =${content} WHERE id = ${params.id}`;
 
-    revalidatePath("/MusicPost");
-    revalidatePath(`/MusicPost/${params.id}`);
+    // revalidatePath("/MusicPost");
+    // revalidatePath(`/MusicPost/${params.id}`);
 
-    redirect(`/MusicPost/${params.id}`);
+    // redirect(`/MusicPost/${params.id}`);
   }
 
   return (
@@ -40,7 +39,6 @@ export default async function editMusicPost({ params }) {
           placeholder="Album"
           defaultValue={MusicPost.album}
         />
-
         <label htmlFor="artist">Artist</label>
         <input
           artist="artist"
@@ -48,7 +46,6 @@ export default async function editMusicPost({ params }) {
           placeholder="Artist"
           defaultValue={MusicPost.artist}
         />
-
         <label htmlFor="genre">Genre</label>
         <input
           genre="genre"
@@ -56,22 +53,20 @@ export default async function editMusicPost({ params }) {
           placeholder="Genre"
           defaultValue={MusicPost.genre}
         />
-
         <label htmlFor="year">Year</label>
         <input
           type="number"
           id="year"
           placeholder="Year"
-          defaultValue={MusicPost.album}
+          defaultValue={MusicPost.year}
         />
-
         <label htmlFor="content">Content</label>
-        <input
+        <textarea
           content="content"
           id="content"
           placeholder="Content"
           defaultValue={MusicPost.year}
-        />
+        ></textarea>
 
         <button>Submit Changes</button>
       </form>

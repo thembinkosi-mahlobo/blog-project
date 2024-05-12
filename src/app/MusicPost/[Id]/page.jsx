@@ -22,13 +22,14 @@ export default async function SingleMusicPost({ params }) {
       <p>{MusicPost.when}</p>
       <h2>{MusicPost.content}</h2>
       <p>{MusicPost.description}</p>
+
       <Image
         src={`/${MusicPost.id}.png`}
         alt={MusicPost.content}
         width={300}
         height={200}
       />
-      <Link href={`/image/Music${params.id}/edit`}>Edit</Link>
+      <Link href={`/MusicPost/${params.id}/edit`}>Edit</Link>
     </div>
   );
 }
